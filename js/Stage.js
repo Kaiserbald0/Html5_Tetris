@@ -1,3 +1,8 @@
+/*
+   @author Marco Baldini
+   @license GNU General Public License, version 2 (GPLv2)
+ */
+
 function Stage(images) {
 
     this.punteggio = 0;

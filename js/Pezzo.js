@@ -1,3 +1,7 @@
+/*
+   @author Marco Baldini
+   @license GNU General Public License, version 2 (GPLv2)
+ */
 function Pezzo(index){
     this.x = 0;
     this.y = 0;
