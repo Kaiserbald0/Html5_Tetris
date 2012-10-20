@@ -1,0 +1,29 @@
+#myCanvas {
+    width:255px;
+    height:330px;
+    display: none;
+    border: 1px solid #000000;
+    float: left;
+}
+
+.configuration {
+    width: 250px;
+    height: 330px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    float: left;
+    border: 1px solid #000000;
+    margin-left: 5px;
+}
+
+.configuration .form input {
+    width: 25px;
+}
+
+.configuration .form input#submit {
+    width: 225px;
+}
+
+.configuration .form {
+    padding-left: 5px;
+}

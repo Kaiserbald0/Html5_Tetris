@@ -2,151 +2,47 @@
 <html>
     <head>
         <!--
-         @author Marco Baldini
+         @author Kaiserbaldo - kaiserbaldo@gmail.com
          @license GNU General Public License, version 2 (GPLv2)
+
         -->
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta 
-        <script src="js/utils.js"></script>
-        <script src="js/Pezzo.js"></script>
-        <script src="js/Stage.js"></script>
-        <script> 
-            
-            
-            window.onload = function(){
-                var canvas = document.getElementById("myCanvas");
-                var context = canvas.getContext("2d");
- 
-                var sources = {
-                    azzurro: "assets/azzurro.bmp",
-                    blu: "assets/blu.bmp",
-                    giallo: "assets/giallo.bmp",
-                    blu: "assets/blu.bmp",
-                    nero: "assets/nero.bmp",
-                    rosso: "assets/rosso.bmp",
-                    nero: "assets/nero.bmp",
-                    arancione: "assets/arancione.bmp",
-                    viola: "assets/viola.bmp",
-                    verde: "assets/verde.bmp",
-                    trasp: "assets/trasp.bmp",
-                    white: "assets/white.bmp",
-                    
-                    nextI: "assets/i.bmp",
-                    nextI1: "assets/i1.bmp",
-                    nextI2: "assets/i2.bmp",
-                    
-                    nextL: "assets/l.bmp",
-                    nextL1: "assets/l1.bmp",
-                    nextL2: "assets/l2.bmp",
-                    
-                    nextLO: "assets/lo.bmp",
-                    nextLO1: "assets/lo1.bmp",
-                    nextLO2: "assets/lo2.bmp",                    
-                    
-                    nextO: "assets/o.bmp",
-                    nextO1: "assets/o1.bmp",
-                    nextO2: "assets/o2.bmp",    
-                    
-                    nextS: "assets/s.bmp",
-                    nextS1: "assets/s1.bmp",
-                    nextS2: "assets/s2.bmp", 
-                    
-                    nextT: "assets/t.bmp",
-                    nextT1: "assets/t1.bmp",
-                    nextT2: "assets/t2.bmp",
-                    
-                    nextZ: "assets/z.bmp",
-                    nextZ1: "assets/z1.bmp",
-                    nextZ2: "assets/z2.bmp"
-                };
-                
-                var borderColor = "#ff0000";
-                var borderWidth = 10;
-                var xOffset = 5;
-                
-                
-                context.lineWidth = borderWidth;                
-                context.strokeStyle = borderColor;
-                //Bordo sinistro
-                context.moveTo(0+xOffset, 0);
-                context.lineTo(0+xOffset, 305);
-                context.stroke();
-    
-                //Bordo basso
-                context.moveTo(0+xOffset, 300);
-                context.lineTo(150+xOffset, 300);
-                context.stroke();
-                
-                //Bordo destro
-                context.moveTo(150+xOffset, 305);
-                context.lineTo(150+xOffset, 0);
-                context.stroke();
-                /*
-                context.moveTo(150+xOffset, 97);
-                context.lineTo(150+xOffset, 0);
-                context.stroke();*/
 
-                //Casella hold
-                context.lineWidth = 6;                
-                context.strokeStyle = borderColor;
-                context.moveTo(156, 50);
-                context.lineTo(199, 50);
-                context.stroke();
-                context.moveTo(196, 50);
-                context.lineTo(196, 0);
-                context.stroke();
-                context.moveTo(196, 3);
-                context.lineTo(156, 3);
-                context.stroke();
-                context.font = "12pt Calibri";
-                context.fillText("Hold", 213, 30);
+        <link rel="stylesheet" href="css/main.css" type="text/css" media="all">
 
-                //Casella next
-                context.lineWidth = 6;                
-                context.strokeStyle = borderColor;
-                context.moveTo(160, 50);
-                context.lineTo(215, 50);
-                context.stroke();
-                context.moveTo(213, 47);
-                context.lineTo(213, 113);
-                context.stroke();
-                context.moveTo(216, 116);
-                context.lineTo(160, 116);
-                context.stroke();
-                context.font = "12pt Calibri";
-                context.fillText("Next", 220, 57);
-                
-                context.font = "10pt Calibri";
-                context.fillText("Score:", 165, 244);
-                context.fillText("Lines:", 165, 264);
-                context.fillText("LtNL:", 165, 284);
-                context.fillText("Level:", 165, 304);
-                
-
-                loadImages(sources, function(assets){                   
-                    stage = new Stage(assets);
-                    document.getElementById("preloader").style.display = "none";
-                    document.getElementById("myCanvas").style.display = "block";
-                });
-                
-                   // context.drawImage(images.azzurro, 100, 30, 15, 15);
-                   // context.drawImage(images.blu, 350, 55, 15, 15);
-                
-                 
-                
-            };
- 
+        <script src="js/mootools-core-1.4.5-full-compat-yc.js" type="text/javascript"></script>
+        <script src="js/utils.js" type="text/javascript"></script>
+        <script src="js/Piece.js" type="text/javascript"></script>
+        <script src="js/Stage.js" type="text/javascript"></script>
+        <script>
+            window.addEvent('domready',setupDom);
         </script>
 
     </head>
-    <body onkeydown="keyPressed(event)">
+    <body id="body">
         <div id="preloader">
             Wait while the game load ...
         </div>
-        <canvas id="myCanvas" width="255" height="330" style="display: none; border: 1px solid #000000">
-            
+        <canvas id="myCanvas" width="255" height="330">
+
         </canvas>
 
+        <div class="configuration">
+            <div class="title">
+
+            </div>
+            <div class="form">
+
+                <label for="left_key">Left Key:</label> <input type="text" id="left_key" class="key_selector"><br>
+                <label for="right_key">Right Key:</label> <input type="text" id="right_key" class="key_selector"><br>
+                <label for="rotate_key">Rotate Key:</label> <input type="text" id="rotate_key" class="key_selector"><br>
+                <label for="hold_key">Hold Key:</label> <input type="text" id="hold_key" class="key_selector"><br>
+                <label for="drop_key">Drop Key:</label> <input type="text" id="drop_key" class="key_selector"><br>
+                <label for="down_key">Fast Down Key:</label> <input type="text" id="down_key" class="key_selector"><br>
+                <input type="button" id="submit" value="Save configuration">
+
+            </div>
+        </div>
     </body>
 </html>
