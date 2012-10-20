@@ -51,14 +51,14 @@ function keyPressed(e) {
     } else if ((unicode == stage.DropKey)&&(stage.playing ==1)) {
         stage.Drop();
     } else if ((unicode == stage.PauseKey)&&( stage.playing ==1 || stage.paused==1 )) {
-        stage.Pause();
+        stage.pause();
     }
 
 }
 
 function saveKey() {
 
-    stage.SaveKey(function(){
+    stage.saveKey(function(){
         alert("Configuration Saved!");
     });
 }
@@ -83,7 +83,7 @@ function preSaveKey(e) {
             stage.TempHoldKey = unicode;
         break;
         case 'drop_key':
-            stage.TemDropKey = unicode;
+            stage.TempDropKey = unicode;
         break;
         case 'down_key':
             stage.TempDownKey = unicode;
@@ -95,8 +95,8 @@ function preSaveKey(e) {
 
 function setupDom() {
 
-    if (typeof(Storage) === "undefined") {
-        alert("No web storage support, please use a proper browser");
+    if (!(Modernizr["canvas"] && Modernizr["canvastext"] && Modernizr["localstorage"])) {
+        alert("Please use a proper browser, you need support for Canvas, CanvasText and LocalStorage");
     } else {
 
         var canvas = document.getElementById("myCanvas");

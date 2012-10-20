@@ -2,22 +2,22 @@
     @author Kaiserbaldo - kaiserbaldo@gmail.com
     @license GNU General Public License, version 2 (GPLv2)
  */
-function Piece(index){
+function Tetromino(index){
     this.x = 0;
     this.y = 0;
-    this.frameSelezionato = 0;
+    this.selectedFrame = 0;
     this.getNew(index);
 }
 
-Piece.prototype.getNew = function (index) {
+Tetromino.prototype.getNew = function (index) {
 
     this.x = 4;
     //index = 6;
     this.index = index;
     switch (index) {
 
-        case 1://quadrato - ok
-            this.numeroFrame = 1;
+        case 1://square - ok
+            this.frameNumber = 1;
             this.sprite = 5;
             this.sprite = 1;
             this.frame = new Array(
@@ -30,8 +30,8 @@ Piece.prototype.getNew = function (index) {
             );
             break;
 
-        case 2://lungo
-            this.numeroFrame = 4;
+        case 2://line
+            this.frameNumber = 4;
             this.sprite = 4;
             this.sprite = 2;
             this.frame = new Array(
@@ -63,7 +63,7 @@ Piece.prototype.getNew = function (index) {
             break;
 
         case 3://S
-            this.numeroFrame = 4;
+            this.frameNumber = 4;
             this.sprite = 7;
             this.sprite = 3;
             this.frame = new Array(
@@ -97,7 +97,7 @@ Piece.prototype.getNew = function (index) {
         case 4://Z
             this.sprite = 2;
             this.sprite = 4;
-            this.numeroFrame = 2;
+            this.frameNumber = 2;
             this.frame = new Array(
                 new Array(
                     new Array(-1, -1),
@@ -127,7 +127,7 @@ Piece.prototype.getNew = function (index) {
             break;
 
         case 5://L
-            this.numeroFrame = 4;
+            this.frameNumber = 4;
             this.sprite = 3;
             this.sprite = 5;
             this.frame = new Array(
@@ -161,7 +161,7 @@ Piece.prototype.getNew = function (index) {
         case 6://J
             this.sprite = 1;
             this.sprite = 6;
-            this.numeroFrame = 4;
+            this.frameNumber = 4;
             this.frame = new Array(
                 new Array(
                     new Array(-1, -1),
@@ -193,7 +193,7 @@ Piece.prototype.getNew = function (index) {
         case 7://T
             this.sprite = 6;
             this.sprite = 7;
-            this.numeroFrame = 4;
+            this.frameNumber = 4;
             this.frame = new Array(
                 new Array(
                     new Array(-1, 0),
@@ -225,11 +225,11 @@ Piece.prototype.getNew = function (index) {
     }
 };
 
-Piece.prototype.nextFrame = function () {
+Tetromino.prototype.nextFrame = function () {
 
-    if ((this.frameSelezionato + 1) < this.numeroFrame) {
-        this.frameSelezionato++;
+    if ((this.selectedFrame + 1) < this.frameNumber) {
+        this.selectedFrame++;
     } else {
-        this.frameSelezionato = 0
+        this.selectedFrame = 0
     }
 };
