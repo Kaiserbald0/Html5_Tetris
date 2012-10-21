@@ -1,6 +1,6 @@
 /*
     @author Kaiserbaldo - kaiserbaldo@gmail.com
-    @license GNU General Public License, version 2 (GPLv2)
+    @license GNU General Public License, version 3 (GPLv3)
  */
 function Tetromino(index){
     this.x = 0;
