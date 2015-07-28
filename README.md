@@ -10,4 +10,4 @@ Modernizr (httpp://modernizr.com)
 
 PS: The license is being check to avoid conflict with third party library
 
-Kaiserbaldo (kaiserbaldo@gmail.com)
+Kaiserbald0 (kaiserbald0@protonmail.ch)
